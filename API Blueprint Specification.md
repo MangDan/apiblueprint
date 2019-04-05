@@ -1,3 +1,8 @@
+# API Blueprint
+본 문서는 API Blueprint 공식 깃헙 문서를 번역한 문서입니다.  
+원문 깃헙 문서 :  https://github.com/MangDan/apiblueprint/blob/master/API%20Blueprint%20Specification.md  
+APU Blueprint 공식 홈페이지의 Specification 페이지 : https://apiblueprint.org/documentation/specification.html
+
 ---
 
 Author: z@apiary.io
