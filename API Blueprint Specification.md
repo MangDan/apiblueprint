@@ -1,7 +1,10 @@
 # API Blueprint
 본 문서는 API Blueprint 공식 깃헙 문서를 번역한 문서입니다.  
-원문 깃헙 문서 :  https://github.com/MangDan/apiblueprint/blob/master/API%20Blueprint%20Specification.md  
-APU Blueprint 공식 홈페이지의 Specification 페이지 : https://apiblueprint.org/documentation/specification.html
+  
+원문 깃헙 문서 :  
+https://github.com/MangDan/apiblueprint/blob/master/API%20Blueprint%20Specification.md  
+APU Blueprint 공식 홈페이지의 Specification 페이지 :  
+https://apiblueprint.org/documentation/specification.html
 
 ---
 
@@ -60,37 +63,28 @@ Version: 1A9
 <br>
 
 <a name="def-api-blueprint-language"></a>
-# I. API Blueprint Language
+# I. API Blueprint 언어
 
 <a name="def-introduction"></a>
-## Introduction
-This documents is a full specification of the API Blueprint format. For a less
-formal introduction to API Blueprint visit the
-[API Blueprint Tutorial](Tutorial.md) or check some of the [examples][].
+## 소개
+이 문서는 API Blueprint 형식의 전체 규격이다.  
+API Blueprint에 대한 간단하게 요약된 내용은 [API Blueprint Tutorial](Tutorial.md) 혹은 [examples][] 중 일부를 확인하기 바란다.
 
 <a name="def-api-blueprint"></a>
 ## API Blueprint
-API Blueprint is a documentation-oriented web API description language. The
-API Blueprint is essentially a set of semantic assumptions laid on top of the
-Markdown syntax used to describe a web API.
+API Blueprint는 API 문서 지향 웹 API 설명 언어다. (역자: 웹 API(REST)를 설계하기 위한 문서 작성 언어라고 이해하자) API Blueprint는 기본적으로 웹 API를 기술하기 위해 사용되는 Markdown 구문 위에 놓인 의미적 가정의 집합이다. (역자: 마크다운 구문을 활용해서 API 정의하는 스펙정도로 이해하면 된다.)
 
-In addition to the regular [Markdown syntax][], API Blueprint conforms to the
-[GitHub Flavored Markdown syntax][].
+API Blueprint는 일반 [Markdown syntax][] 외에 [GitHub Fluested Markdown syntax][]을 준수한다.
 
 <a name="def-api-blueprint-document"></a>
-## API Blueprint document
-An API Blueprint document – a blueprint – is a plain text Markdown document
-describing a Web API in whole or in part. The document is structured into
-logical **sections**. Each section has its distinctive meaning, content and
-position in the document.
+## API Blueprint 문서
+API Blueprint 문서( Blueprint)는 웹 API의 전체 또는 일부를 기술하기 위한 일반 텍스트 마크다운 문서다. 그 문서는 논리적인 **섹션***으로 구성되어 있다. 각 섹션은 문서에서 고유한 의미, 내용 및 위치를 가진다.
 
-General section definition and structure is discussed in detail later in the
-[Blueprint section](#def-blueprint-section) chapter.
+일반 섹션 정의 및 구조는 [Blueprint section](#def-blueprint-section) 장 뒷부분에서 상세히 다룬다.
 
-All of the blueprint sections are optional. However, when present, a section
-**must** follow the API Blueprint **document structure**.
+모든 Blueprint 섹션은 선택 사항이다. 단, 섹션은 API Blueprint **문서 구조(document structure)**를 준수해야 한다.
 
-### Blueprint document structure
+### Blueprint 문서 구조 (document structure)
 
 + [`0-1` **Metadata** section](#def-metadata-section)
 + [`0-1` **API Name & overview** section](#def-api-name-section)
@@ -120,30 +114,23 @@ All of the blueprint sections are optional. However, when present, a section
     + [`0+` **Resource** sections](#def-resource-section) (see above)
 + [`0+` **Data Structures** section](#def-data-structures)
 
-> **NOTE:** The number prior to a section name denotes the allowed number of
-> the section occurrences.
+> **NOTE:** 섹션 이름 앞의 숫자는 해당 섹션에 대한 허용되는 개수를 나타낸다. (역자: 각 레벨에서 > 허용하는 셋션 수, 예를 들면 Resource 섹션 하위 URI Parameters 섹션은 1개까지만 포함될 수 있다.)
 
-> **NOTE:** Refer to [Sections Reference](#def-sections-reference) for
-> description of a specific section type.
+> **NOTE:** 특정 섹션 유형에 대한 설명은 [Sections Reference](#defections-reference)를 참조.
+
 
 <a name="def-blueprint-section"></a>
-## Blueprint section
-A _Section_ represents a logical unit of an API Blueprint. For example: an API
-overview, a group of resources or a resource definition.
+## Blueprint 섹션(section)
+_섹션_은 API Blueprint의 논리적인 단위다. 예: API 개요, 리소스 그룹 또는 리소스 정의.
 
-In general a section is **defined** using a **keyword** in a Markdown entity.
-Depending on the type of section the keyword is written either as a Markdown
-header entity or in a list item entity.
+일반적으로 섹션은 마크다운 요소에서 키워드를 사용하여 정의된다. 키워드는 섹션의 유형에 따라 마크다운 헤더 요소 또는 목록 항목 요소로 작성된다.
 
-A section definition **may** also contain additional variable components such
-as its **identifier** and additional modifiers.
+섹션 정의는 또한 식별자(identifier) 및 추가 수식어(modifier)와 같은 추가 변수 구성요소를 포함할 수 있다.
 
-> **NOTE**: There are two special sections that are recognized by their
-> position in the document instead of a keyword: The [Metadata section](#def-metadata-section) and
-> the [API Name & Overview section](#def-api-name-section). Refer to the respective section entry
-> for details on its definition.
+> **NOTE**: 키워드 대신 문서에서 위치에 따라 인식되는 두 개의 특별한 섹션이 있다: [Metadata section](#def-metadata-section)과 [API Name & Overview section](#def-api-name-section)이다. 정의에 대한 자세한 내용은 해당 섹션 항목을 참조.
 
-#### Example: Header-defined sections
+
+#### 예: 헤더로 정의된 섹션
 
     # <keyword>
 
@@ -154,8 +141,8 @@ as its **identifier** and additional modifiers.
      ...
 
 
-> **NOTE:** While this specification uses "atx"-style headers (using `#`s)
->  you can also use "Setext" [header syntax][] interchangeably:
+
+> **NOTE:** 이 규격은 "atx" 스타일 헤더(`#`s 사용)를 사용하지만, 아래와 같이 "Setext" 헤더 구문(====)> 도 서로 바꾸어 사용할 수 있다:
 >
 >     <keyword>
 >     =========
@@ -167,7 +154,7 @@ as its **identifier** and additional modifiers.
 >
 >     ...
 
-#### Example: List-defined sections
+#### Example: 목록으로 정의된 섹션
 
     + <keyword>
 
@@ -177,9 +164,7 @@ as its **identifier** and additional modifiers.
 
      ...
 
-> **NOTE:**  While this specification uses pluses (`+`) as list markers you can
-> use any Markdown [list syntax][] using asterisks (`*`), pluses (`+`) and
-> hyphens (`-`) interchangeably:
+> **NOTE:**  이 규격은 플러스(`+`)를 목록 마커로 사용하지만, 별표(`*`), 플러스(`+`) 및 하이픈(`-`)과 같은 마크다운 [list syntax][]을 사용할 수도 있다:
 >
 >     * <keyword>
 >
@@ -190,22 +175,19 @@ as its **identifier** and additional modifiers.
 >     ...
 
 <a name="def-section-types"></a>
-### Section types
-There are several types of API Blueprint sections. You can find the complete
-listing of the section types in the
-[Section Reference](#def-sections-reference).
+### 섹션 유형들 (Section types)
+API Blueprint 섹션에는 여러가지 유형이 있다. [Section Reference](#def-sections-reference)에서 섹션 유형의 전체 목록을 확인할 수 있다.
 
-**The Blueprint section chapter discusses the section syntax in general.**
-**A specific section type may conform only to some parts of this general syntax.**
-Always refer for respective section reference for details on its syntax.
+**Blueprint 섹션 챕터에서는 일반적인 섹션 구문에 대해서 얘기한다.**
+**특정 섹션 유형은 이 일반 섹션 구문의 일부 부분에서 확인할 수 있다.**
+구문에 대한 자세한 내용은 항상 각 섹션 참조 (Section Reference)를 참고.
 
 <a name="def-section-structure"></a>
-### Section structure
-A general structure of an API Blueprint section defined by a **keyword**
-includes an **identifier** (name), section **description** and **nested
-sections** or a specifically formatted content.
+### 섹션 구조 (Section structure)
+**키워드**로 정의된 API Blueprint 섹션의 일반적인 구조는 **식별자(identifier) (name)**, 섹션 **설명(description)** 및 **내포된 섹션(nested
+sections)** 또는 특별하게 **정의된 콘텐츠(specific content)**를 포함한다.
 
-#### Example: Header-defined section structure
+#### 예: 헤더로 정의된 섹션 구조
 
     # <keyword> <identifier>
 
@@ -215,7 +197,7 @@ sections** or a specifically formatted content.
 
     <nested sections>
 
-#### Example: List-defined section structure
+#### Example: 목록으로 정의된 섹션 구조
 
     + <keyword> <identifier>
 
@@ -226,17 +208,17 @@ sections** or a specifically formatted content.
         <nested sections>
 
 <a name="def-keywords"></a>
-### Keywords
-Following reserved keywords are used in section definitions:
+### 키워드 (Keywords)
+섹션 정의에는 다음과 같은 예약된 키워드가 사용된다.
 
-#### Header keywords
+#### 헤더 키워드 (Header keywords)
 - `Group`
 - `Data Structures`
 - [HTTP methods][httpmethods] (e.g. `GET, POST, PUT, DELETE`...)
 - [URI templates][uritemplate] (e.g. `/resource/{id}`)
 - Combinations of an HTTP method and URI Template (e.g. `GET /resource/{id}`)
 
-#### List keywords
+#### 목록 키워드 (List keywords)
 - `Request`
 - `Response`
 - `Body`
@@ -248,20 +230,18 @@ Following reserved keywords are used in section definitions:
 - `Attribute` & `Attributes`
 - `Relation`
 
-> **NOTE: Avoid using these keywords in other Markdown headers or lists**
+> **NOTE: 다른 Markdown 헤더 또는 목록에서 이러한 키워드를 사용하지 마십시오. (역자: 사용하지 못한다는 의미라기 보다는 API Blueprint 고유 키워드이므로, 다른 마크다운에서는 인식하지 못할 뿐)
 
-> **NOTE:** With the exception of HTTP methods keywords the section keywords
-> are case insensitive.
+> **NOTE:** WHTTP 메서드 키워드(GET, POST, PUT, DELETE)를 제외하고 섹션 키워드는 대소문자를 구분하지 않는다.
 
 <a name="def-identifier"></a>
-### Identifier
-A section definition **may** or **must** include an identifier of the section.
-An **identifier is any non-empty combination of any character except `[`, `]`,
-`(`, `)` and newline characters**.
+### 식별자 (Identifier)
+섹션 정의에서는 섹션의 식별자(Identifier)를 포함할 수 있거나 포함해야 한다. 식별자는 `[`, `]`,
+`(`, `)` 및 newline 문자를 제외한 모든 문자의 조합이다.
 
-An identifier **must not** contain any of the [keywords](#def-keywords).
+식별자는 키워드를 포함하지 않아야 한다.
 
-#### Example
+#### 예제
 
 ```
 Adam's Message 42
@@ -273,28 +253,20 @@ my-awesome-message_2
 
 
 <a name="def-description"></a>
-### Description
-A section description is any arbitrary Markdown-formatted content following the
-section definition.
+### 설명 (Description)
+섹션 설명(Description)이란 섹션 정의를 따르는 임의의 마크다운 형식의 내용을 말한다. (역자: 섹션을 정의할 때 섹션에 대한 설명을 붙이고 싶을 때 사용하는 부분이라고 이해하면 된다.)
 
-It is possible to use any Markdown header or list item in a section description
-as long as it does not clash with any of the
-[reserved keywords](#def-keywords).
+[reserved keywords](#def-keywords)와 충돌하지 않는 한 섹션 설명(Description)에 Markdown 헤더 또는 목록 항목을 사용하는 것이 가능하다.
 
-> **NOTE:** It is considered good practice to keep the header level nested
-> under the actual section.
+> **NOTE:** 헤더 레벨은 실제 섹션에서 중첩된 상태로 유지하는 것을 좋은 사례로 간주한다. (먼 말이냐 ㅡㅡ)
 
 <a name="def-nested-sections"></a>
-### Nested sections
-A section **may** contain another nested section(s).
+### 중첩, 내포된 섹션 (Nested sections)
+한 섹션은 다른 내포된 섹션을 포함할 수 있다.
 
-Depending on the nested section type, to nest a section simply increase its
-header level or its list item indentation. Anything between the section start
-and the start of following section at the same level is considered to be part
-of the section.
+내포된 섹션 유형에 따라 섹션을 내포하려면 헤더 수준 (동일한 레벨)이나 목록 항목 들여쓰기로 증가(포함)시키기만 하면 된다. 동일한 레벨에서 섹션 시작과 다음 섹션의 시작 사이에 있는 모든 것은 섹션의 일부로 간주된다.
 
-What sections can be nested and where depends upon the section in case, as
-described in the relevant section's entry.
+중첩될 수 있는 섹션과 장소는 관련 섹션의 기재에 설명된 바와 같이, 경우에 따라 섹션에 따라 달라진다.
 
 #### Example: Nested header-defined section
 
@@ -316,19 +288,15 @@ described in the relevant section's entry.
 
          ...
 
-> **NOTE:** While not necessary it is a good habit to increase the level of a
-> nested section markdown-header.
+> **NOTE:** 꼭은 아니지만 내포된 섹션 마크다운 헤더의 레벨을 높이는 것은 좋은 습관이다.
 
-> **NOTE:** A markdown-list section is always considered to be nested under the
-> preceding markdown-header section.
+> **NOTE:** 마크다운 리스트 섹션은 항상 앞의 마크다운 헤더 섹션에 따라 중첩되는 것으로 간주된다.
 
 ---
 
 <a name="def-sections-reference"></a>
-# II. Sections Reference
-> **NOTE:** Sections marked as "Abstract" serve as a base for other sections
-> and as such they **cannot** be used directly.
-
+# II. 섹션 참조 (Sections Reference)
+> **NOTE:** "Abstract"으로 표시된 섹션은 다른 섹션의 베이스 역할을 하므로 직접 사용할 수 없다.
 
 # Abstract
 
@@ -341,8 +309,7 @@ described in the relevant section's entry.
 - **Inherits from**: none
 
 #### Definition
-Defined by a [keyword](#def-keywords) followed by an optional section name -
-[identifier](#def-identifier) in a Markdown header or list entity.
+선택적 섹션 이름에 의한 [keyword](#def-keywords)에 의해 정의된다 - 마크다운 헤더 또는 목록 엔티티에서의 [identifier](#def-identifier).
 
 ```
 # <keyword> <identifier>
@@ -357,6 +324,11 @@ Named section is the base section for most of the API Blueprint sections. It
 conforms to the [general section](#def-section-structure) and as such it is
 composed of a section name (identifier), description and nested sections or
 specific formatted content (see descendants descriptions).
+
+명명된 섹션은 대부분의 API Blueprint 섹션의 기본 섹션이다. 그것
+[일반 섹션](#def-section-structure)에 부합하며, 이와 같이 다음과 같다.
+섹션 이름(식별자), 설명 및 내포된 섹션 또는
+특정 포맷된 콘텐츠(후속 설명 참조).
 
 #### Example
 
