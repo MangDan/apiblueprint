@@ -308,7 +308,7 @@ my-awesome-message_2
 - **Markdown entity:** header, list
 - **Inherits from**: none
 
-#### Definition
+#### 정의
 선택적 섹션 이름에 의한 [keyword](#def-keywords)에 의해 정의된다 - 마크다운 헤더 또는 목록 엔티티에서의 [identifier](#def-identifier).
 
 ```
@@ -319,18 +319,10 @@ my-awesome-message_2
 + <keyword> <identifier>
 ```
 
-#### Description
-Named section is the base section for most of the API Blueprint sections. It
-conforms to the [general section](#def-section-structure) and as such it is
-composed of a section name (identifier), description and nested sections or
-specific formatted content (see descendants descriptions).
+#### 설명
+명명된 섹션은 대부분의 API Blueprint 섹션의 기본 섹션이다. [general section](#def-section-structure)에 부합하며 섹션 이름(식별자), 설명 및 내포된 섹션 또는 특정 형식의 내용으로 구성된다(하위 설명 참조).
 
-명명된 섹션은 대부분의 API Blueprint 섹션의 기본 섹션이다. 그것
-[일반 섹션](#def-section-structure)에 부합하며, 이와 같이 다음과 같다.
-섹션 이름(식별자), 설명 및 내포된 섹션 또는
-특정 포맷된 콘텐츠(후속 설명 참조).
-
-#### Example
+#### 예제
 
     # <keyword> Section Name
     This the `Section Name` description.
@@ -351,17 +343,15 @@ specific formatted content (see descendants descriptions).
 - **Markdown entity:** list
 - **Inherits from**: none
 
-#### Definition
-Defined by a [keyword](#def-keywords) in Markdown list entity.
+#### 정의
+마크다운 목록 엔터티내에서 [keyword](#def-keywords)로 정의된다.
 
     + <keyword>
 
-#### Description
-The asset section is the base section for atomic data in API Blueprint. The content
-of this section is expected to be a
-[pre-formatted code block](http://daringfireball.net/projects/markdown/syntax#precode).
+#### 설명
+Asset 섹션은 API Blueprint의 원자형 데이터에 대한 기본 섹션이다. 이 섹션의 내용은 [pre-formatted code block](http://daringfireball.net/projects/markdown/syntax#precode)이 될 것으로 보인다.
 
-#### Example
+#### 예제
 
     + <keyword>
 
@@ -369,7 +359,7 @@ of this section is expected to be a
                 "message": "Hello"
             }
 
-#### Example: Fenced code blocks
+#### 예제: Fenced code blocks
 
     + <keyword>
 
@@ -382,44 +372,34 @@ of this section is expected to be a
 ---
 
 <a name="def-payload-section"></a>
-## Payload section
+## 페이로드 섹션 (Payload section)
 - **Abstract**
 - **Parent sections:** vary, see descendants
 - **Nested sections:** [`0-1` Headers section](#def-headers-section), [`0-1` Attributes section](#def-attributes-section), [`0-1` Body section](#def-body-section), [`0-1` Schema section](#def-schema-section)
 - **Markdown entity:** list
 - **Inherits from**: [Named section](#def-named-section)
 
-#### Definition
-Defined by a [keyword](#def-keywords) in Markdown list entity. The keyword **may** be followed by identifier.
-The definition **may** include payload's media-type enclosed in braces.
+#### 정의
+Markdown 목록 엔티티에서 [keyword](#def-keywords)로 정의됨. 키워드 뒤에 식별자가 붙을 수 있다. 정의는 브레이스()로 둘러싸인 페이로드의 미디어 유형이 포함될 수 있다.
 
     + <keyword> <identifier> (<media type>)
 
-> **NOTE:** Refer to descendant for the particular section type definition.
+> **NOTE:** 특정 섹션 유형 정의는 하위 항목을 참조.
 
-#### Description
-Payload sections represent the information transferred as a payload of an HTTP
-request or response messages. A Payload consists of optional meta information
-in the form of HTTP headers and optional content in the form of an HTTP body.
+#### 설명
+페이로드 섹션은 HTTP 요청 또는 응답 메시지의 페이로드로 전송되는 정보를 나타낸다. 페이로드(Payload)는 HTTP 헤더 형태의 메타 정보와 HTTP 본문 형태의 임의의 콘텐츠로 선택적으로 구성된다.
 
-Furthermore, in API Blueprint context, a payload includes its description,
-description of its message-body attributes and a message-body validation
-schema.
+또한 API Blueprint 컨텍스트에서 페이로드에는 설명, 메시지 본문 속성 설명 및 메시지 본문 검증 스키마가 포함된다.
 
-A payload **may** have its media type associated. A payload's media type
-represents the metadata received or sent in the form of a HTTP `Content-Type`
-header. When specified a payload **should** include nested
-[Body section](#def-body-section).
+페이로드에는 미디어 유형이 연관되어 있을 수 있다. 페이로드의 미디어 유형은 HTTP Content-Type 헤더 형식으로써 수신되거나 전송된 메타데이터를 나타낸다. 지정된 경우 페이로드는 내포된 차체 [Body section](#def-body-section)을 포함한다.
 
-This section **should** include at least one of the following nested sections:
-
+이 섹션에는 다음의 내포된 섹션 하나 이상이 포함되어야 한다:
 - [`0-1` Headers section](#def-headers-section)
 - [`0-1` Attributes section](#def-attributes-section)
 - [`0-1` Body section](#def-body-section)
 - [`0-1` Schema section](#def-schema-section)
 
-If there is no nested section the content of the payload section is considered
-as content of the [Body section](#def-body-section).
+페이로드 섹션의 내용에 내포된 세션이 없다면, [Body section](#def-body-section)으로 간주된다.
 
 #### Relation of Body, Schema and Attributes sections
 Each of body, schema and attributes sections describe a message payload's body.
