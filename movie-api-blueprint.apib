@@ -1,0 +1,150 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# 영화 API
+
+최근 인기있는 **영화 정보**와 관련 **영화인**에 대한 정보를 제공하는 API
+
+# Group 영화 API
+
+## 영화 정보 리소스 [/api/search/v1/movies]
+
+### 영화 조회 [GET /api/search/v1/movies{?title}]
+영화명으로 영화를 검색하여 비슷한 이름의 영화 리스트를 제공
+
++ Request
+
+   + Headers
+   
+            api_key: adfadfvkljadflkjasdflkasdf
+
++ Parameters
+    + title : 대부 (string, optional) – 제목
+       
++ Response 200 (application/json)
+
+        [
+              {
+                "id": 576393,
+                "poster_path": "/wtaSH8MfJSCEIrrEX9SQuHdU5sl.jpg",
+                "release_date": "2019-03-27",
+                "title": "장난스런 키스",
+                "vote_average": 5,
+                "vote_count": 25
+              },
+              {
+                "id": 531309,
+                "poster_path": "/eTEXcHiEk6r10HD2015xNYLUWYu.jpg",
+                "release_date": "2019-05-23",
+                "title": "더 보이",
+                "vote_average": 5,
+                "vote_count": 23
+              },
+              {
+                "id": 504172,
+                "poster_path": "/uoP6ax0PqMTdd8b2jkpEXuEkqvi.jpg",
+                "release_date": "2019-03-14",
+                "title": "라스트 미션",
+                "vote_average": 6,
+                "vote_count": 1468
+              },
+              {
+                "id": 480414,
+                "poster_path": "/8kllbCOM38idMWXzsk6mMzpbcsC.jpg",
+                "release_date": "2019-04-17",
+                "title": "요로나의 저주",
+                "vote_average": 5,
+                "vote_count": 292
+              },
+              {
+                "id": 458723,
+                "poster_path": "/vfNBftZoXsUnNWccz8ew9h8Jicx.jpg",
+                "release_date": "2019-03-27",
+                "title": "어스",
+                "vote_average": 7,
+                "vote_count": 1331
+              },
+              {
+                "id": 458156,
+                "poster_path": "/ghx93NNkUHStNFIoXRoCMbfsxHv.jpg",
+                "release_date": "2019-06-26",
+                "title": "존 윅 3: 파라벨룸",
+                "vote_average": 7,
+                "vote_count": 375
+              }
+        ]
+
+### 영화 상세 조회 [GET /api/search/v1/movies/{id}]
+영화 ID로 영화 상세 조회
+
++ Request
+
+   + Headers
+   
+            api_key: adfadfvkljadflkjasdflkasdf
+   
++ Parameters
+   + id : 458156 (number, required) - 영화 아이디
+   
++ Response 200 (application/json)
+
+   + Headers
+
+            Location: /api/search/v1/movie/278
+
+   + Body
+
+            {
+                "id": 458156,
+                "poster_path": "/ghx93NNkUHStNFIoXRoCMbfsxHv.jpg",
+                "release_date": "2019-06-26",
+                "title": "존 윅 3: 파라벨룸",
+                "vote_average": 7,
+                "vote_count": 375,
+                "overview": "업계 레전드 킬러 ‘존 윅’은 국제암살자연합을 통해 파문조치를 당한 후 그에게 따라 붙은 역대 최고의 현상금 1,400만 불로 인해 전 세계의 가장 위협적인 킬러들이 그와의 전쟁을 선포한다."
+              }
+           
+
+# Group 영화인 API
+## 영화인 정보 리소스 [/api/search/v1/movie-people]
+
+### 영화인 조회 [GET /api/search/v1/movie-people{?filmography}]
+필모 그래피로 영화인 정보를 검색하여 리스트를 제공
+
++ Request
+
+   + Headers
+   
+            api_key: adfadfvkljadflkjasdflkasdf
+
++ Parameters
+   + filmography : 존 윅 3 (string, required) - 필모 그래피
+
++ Response 200 (application/json)
+    + Attributes (array[MoviePeopleMeta])
+
+### 영화인 상세 조회 [GET /api/search/v1/movie-people/{id}]
+영화인 ID로 영화인의 상세 정보를 제공하는 API
+
++ Request
+
+   + Headers
+   
+            api_key: adfadfvkljadflkjasdflkasdf
+
++ Parameters
+   + id : 10078687 (number, required) - 영화인 아이디
+
++ Response 200 (application/json)
+    + Attributes (MoviePeople)
+
+# Data Structures
+
+## MoviePeople (object)
++ Include MoviePeopleMeta
++ filmography : 존 윅 3: 파라벨룸 (string, optional) - 필모그래피
+
+## MoviePeopleMeta (object)
++ id : 10084614 (number, required) - 아이디
++ name : 키아누 리브스 (string, required) - 이름
++ role : 배우 (string, optional) - 역할
